@@ -532,7 +532,7 @@ class Model
     {
         list($relationName, $relationColumn) = explode('.', $column);
 
-        if ($this->queries->contains(function ($query) use ($relationName) {
+        if ($this->queries->contains(function ($key, $query) use ($relationName) {
             return $query['method'] == 'with' && in_array($relationName, $query['arguments']);
         })) {
             $relation = $this->model->$relationName();
