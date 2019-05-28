@@ -188,6 +188,8 @@ class Admin
         if (empty($prefix) || $prefix == '/') {
             return '/'.trim($url, '/');
         }
+        
+        $url = str_replace(['[mf_start_date]', '[mf_end_date]'], [date('Y-m-d', strtotime('-7 days')) . ' 00:00:00', date('Y-m-d H:i:s')], $url);
 
         return "/$prefix/".trim($url, '/');
     }
